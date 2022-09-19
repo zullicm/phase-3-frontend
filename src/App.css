@@ -50,3 +50,35 @@
   min-width: 300px;
   min-height: 300px;
 }
+
+.movie-card{
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #b2dfdb ;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border: #282c34;
+  border-style: dashed;
+}
+
+.movie-info{
+  float: left;
+}
+
+.movie-input{
+  width: 300px;
+}
+
+.button{
+  width: 50px;
+  height: 50px;
+}
+
+.ticket-left{
+  border: #282c34;
+  border-style: dashed;
+  width: 306px;
+}
