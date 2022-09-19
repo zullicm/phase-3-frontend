@@ -1,14 +1,14 @@
 import React from "react";
 
-function MainPage(){
+function Home(){
   
   return(
     <>
     <h1>
-      MainPage
+    Home
     </h1>
     </>
   )
 }
 
-export default MainPage
+export default Home
