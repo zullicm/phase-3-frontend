@@ -15,8 +15,8 @@ function Home(){
     <>
       <h1>
         Home
-        {movies.map(movie => <MovieCard key={movie.id} movie={movie} /> )}
       </h1>
+        {movies.map(movie => <MovieCard key={movie.id} movie={movie} /> )}
     </>
   )
 }

@@ -7,20 +7,68 @@ function MovieCard({ movie }){
   const [userName, setUserName] = useState("")
   const [comment, setComment] = useState("")
   const [rate, setRate] = useState("")
-  
-  function reviewSetter(data){
-    setReviews([...reviews, data])
-  }
+
 
   useEffect(() => {
-    fetch(`http://localhost:9292//reviews/${movie.id}`)
+    fetch(`http://localhost:9292/reviews/${movie.id}`)
     .then(res => res.json())
     .then(data => reviewSetter(data))
   }, [])
 
+  function reviewSetter(data){
+    setReviews([...reviews, data])
+  }
+
   function handleSubmit(e){
     e.preventDefault()
+    fetch(`http://localhost:9292/user/${userName}`)
+    .then(res => res.json())
+    .then(data => nameCheck(data))
   }
+
+  function nameCheck(data){
+    if(data){
+      submitReview(data)
+    }else{
+      const newUser = {
+        "name" : userName
+      }
+      fetch(`http://localhost:9292/newuser`,{
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser)
+      })
+    .then(res => res.json())
+    .then(data => submitReview(data))
+    }
+  }
+
+  function submitReview(userData){
+    const userID = userData.id
+
+    const review = {
+      "comment" : comment,
+      "rating" : parseInt(rate),
+      "user_id" : userID,
+      "movie_id" : id
+    }
+
+    fetch(`http://localhost:9292/newreview`,{
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(review)
+      })
+    .then(res => res.json())
+    .then(data => reviewSetter(data))
+      setUserName("")
+      setComment("")
+      setRate("")
+    }
+  
 
 
   function handleName(e){
@@ -40,11 +88,12 @@ function MovieCard({ movie }){
     }else{setRate(e.target.value)}
   }
 
+  const singleMovieReviews = reviews.filter(review => review.movie_id === id)
 
   return(
     <div className="movie-card">
       <div className="reviews">
-        {reviews.map(review => <Review />)}
+        {singleMovieReviews.map(review => <Review  key={review.id} review={review} />)}
       </div>
       <div className="ticket-left">
       <div className="movie-info">
@@ -57,11 +106,10 @@ function MovieCard({ movie }){
           <input type="text" name="comment" placeholder=" Your Witty Comment" onChange={handleComment} value={comment}></input>
           <input type="text" name="rating" placeholder=" Rate 1-10" onChange={handleRate}
            value={rate}></input>
-          <a onClick={handleSubmit} class="waves-effect waves-light btn">Leave Comment</a>
+          <a onClick={handleSubmit} className="waves-effect waves-light btn">Leave Comment</a>
         </form>
       </div>
       </div>
-
     </div>
   )
 }
