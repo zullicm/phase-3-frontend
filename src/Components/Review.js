@@ -1,5 +1,6 @@
 
 import React, {useState, useEffect} from "react";
+import DeleteComment from "./DeleteComment";
 
 function Review({review}){
 
@@ -20,6 +21,7 @@ function Review({review}){
       <p><b>User:</b>  <em>{review.user ? review.user.name : user}</em>  <b>Rating:</b>  {review.rating.toString()}</p>
       <p><b>Comment:</b></p>
       <p>{review.comment}</p>
+      <DeleteComment id={review.id}/>
     </div>
   )
 }
