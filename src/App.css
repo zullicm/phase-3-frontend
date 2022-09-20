@@ -62,7 +62,6 @@
   padding-top: 30px;
   border: #282c34;
   border-style: dashed;
-  width: 75%;
 }
 
 .movie-info{
@@ -87,6 +86,6 @@
 
 .reviews{
   float: right;
-  display: inline;
+
 }
 
