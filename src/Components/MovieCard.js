@@ -16,7 +16,7 @@ function MovieCard({ movie }){
   }, [])
 
   function reviewSetter(data){
-    setReviews([...reviews, data])
+    setReviews(data)
   }
 
   function handleSubmit(e){
@@ -63,7 +63,7 @@ function MovieCard({ movie }){
         body: JSON.stringify(review)
       })
     .then(res => res.json())
-    .then(data => reviewSetter(data))
+    .then(data => reviewSetter([...reviews, data]))
       setUserName("")
       setComment("")
       setRate("")
@@ -88,13 +88,10 @@ function MovieCard({ movie }){
     }else{setRate(e.target.value)}
   }
 
-  const singleMovieReviews = reviews.filter(review => review.movie_id === id)
+  const filterReviews = reviews.filter(review => review.movie_id === id)
 
   return(
     <div className="movie-card">
-      <div className="reviews">
-        {singleMovieReviews.map(review => <Review  key={review.id} review={review} />)}
-      </div>
       <div className="ticket-left">
       <div className="movie-info">
         <img className="movie-image" src={image} />
@@ -109,6 +106,9 @@ function MovieCard({ movie }){
           <a onClick={handleSubmit} className="waves-effect waves-light btn">Leave Comment</a>
         </form>
       </div>
+      </div>
+      <div className="reviews">
+        {filterReviews.map(array => <Review review={array}/>)}
       </div>
     </div>
   )
