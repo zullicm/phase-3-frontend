@@ -14,6 +14,21 @@ function AddMoviePage(){
 
   function handleSubmit(e){
     e.preventDefault()
+
+    const newMovie = {
+      "name" : name,
+      "image" : image
+    }
+
+    fetch(`http://localhost:9292/addmovie`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMovie)
+    })
+     .then(res => res.json())
+     .then(data => setState(data))
   }
 
   return(
