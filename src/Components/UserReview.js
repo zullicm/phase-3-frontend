@@ -5,8 +5,8 @@ import ReviewNotEditing from "./ReviewNotEditing";
 
 function UserReview({review}){
   const [edit, setEdit] = useState(false)
-  const [rating, setRating] = useState("")
-  const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(review.rating)
+  const [comment, setComment] = useState(review.comment)
 
   function rateChange(e){
     setRating(e.target.value)
@@ -19,14 +19,14 @@ function UserReview({review}){
     setEdit(true)
   }
 
-function sendEdit(){
-
+function sendEdit(e){
+  e.preventDefault()
   const changedReview = {
     "rating" : rating,
     "comment" : comment
   }
 
-  fetch(`url/${review.id}`,{
+  fetch(`http://localhost:9292/reviewpatch/${review.id}`,{
     method: "PATCH",
     headers: {
       "Content-Type": "application/json"
@@ -41,7 +41,7 @@ function sendEdit(){
   return(
     <div>
       <div className="review-editor">
-      {edit ? <ReviewEditing commentChange={commentChange}rateChange={rateChange}sendEdit={sendEdit} review={review}/> : <ReviewNotEditing changeEdit={changeEdit}review={review}/>}
+      {edit ? <ReviewEditing commentChange={commentChange}rateChange={rateChange}sendEdit={sendEdit} review={review}/> : <ReviewNotEditing comment={comment}rating={rating}changeEdit={changeEdit}review={review}/>}
       </div>
     </div>
   )
