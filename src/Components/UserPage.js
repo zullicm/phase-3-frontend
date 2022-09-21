@@ -19,7 +19,9 @@ function UserPage({userId}){
     <div>
       <h1>{user.name}'s User Page</h1>
       <h4>Reviews</h4>
+      <div className="user-review-container">
       {reviews.map(review => <UserReview review={review}/>)}
+      </div>
     </div>
   )
 }

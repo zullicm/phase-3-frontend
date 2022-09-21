@@ -1,20 +1,47 @@
-import React from "react";
-import DeleteComment from "./DeleteComment";
+import React, { useState } from "react";
+
+import ReviewEditing from "./ReviewEditing";
+import ReviewNotEditing from "./ReviewNotEditing";
 
 function UserReview({review}){
-  console.log(review)
+  const [edit, setEdit] = useState(false)
+  const [rating, setRating] = useState("")
+  const [comment, setComment] = useState("")
 
-  function onReviewDelete(){
-
+  function rateChange(e){
+    setRating(e.target.value)
   }
+  function commentChange(e){
+    setComment(e.target.value)
+  }
+
+  function changeEdit(){
+    setEdit(true)
+  }
+
+function sendEdit(){
+
+  const changedReview = {
+    "rating" : rating,
+    "comment" : comment
+  }
+
+  fetch(`url/${review.id}`,{
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(changedReview)
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  setEdit(false)
+}
 
   return(
     <div>
-      <div className="user-review">
-        <p><b>Rating:</b>  {review.rating.toString()}</p>
-        <p><b>Comment:</b></p>
-        <p>{review.comment}</p>
-        <DeleteComment onReviewDelete={onReviewDelete} id={review.id}/>
+      <div className="review-editor">
+      {edit ? <ReviewEditing commentChange={commentChange}rateChange={rateChange}sendEdit={sendEdit} review={review}/> : <ReviewNotEditing changeEdit={changeEdit}review={review}/>}
       </div>
     </div>
   )
