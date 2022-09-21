@@ -19,7 +19,7 @@ function Review({review, onReviewDelete, getUserData}){
 
   return (
     <div className="review">
-      <NavLink onClick={() => getUserData(review.user_id)} className="user-link" exact to="/userpage">Go to {review.user.name}'s Page</NavLink>
+      <NavLink onClick={() => getUserData(review.user_id)} className="user-link" exact to="/userpage"><u>Go to Users's Page</u></NavLink>
       <p><b>User:</b>  <em>{review.user ? review.user.name : user}</em>  <b>Rating:</b>  {review.rating.toString()}</p>
       <p><b>Comment:</b></p>
       <p>{review.comment}</p>

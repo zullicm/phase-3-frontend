@@ -36,9 +36,9 @@ function AddMoviePage(){
 
   return(
     <>
-      <h1>
-        AddMoviePage
-      </h1>
+      <h4>
+        Add a Movie with the form below
+      </h4>
       <div className="movie-form">
         <form>
           <input type="text" name="name" placeholder=" Movie Name" onChange={handleName}

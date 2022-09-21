@@ -21,9 +21,6 @@ function Home({getUserData}){
 
   return(
     <>
-      <h1>
-        Home
-      </h1>
         {movies.map(movie => <MovieCard getUserData={getUserData}handleMovieDelete={handleMovieDelete}key={movie.id} movie={movie} /> )}
     </>
   )

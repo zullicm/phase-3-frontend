@@ -31,7 +31,9 @@ function MovieCard({ movie, handleMovieDelete, getUserData }){
   }
 
   function handleSubmit(e){
+    
     e.preventDefault()
+
     fetch(`http://localhost:9292/user/${userName}`)
     .then(res => res.json())
     .then(data => nameCheck(data))
