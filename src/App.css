@@ -63,7 +63,11 @@
   border: #282c34;
   border-style: dashed;
   display: flex;
-  max-height: 611px;
+  max-height: 661px;
+}
+
+.movie-name{
+  color: white;
 }
 
 .movie-info{

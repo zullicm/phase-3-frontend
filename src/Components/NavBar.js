@@ -8,7 +8,7 @@ function NavBar(){
       <div className="teal lighten-3 nav-wrapper">
           <NavLink id="nav-logo" exact to="/">Movie Reviewer</NavLink>
           <ul className="right hide-on-med-and-down">
-          <li><NavLink className="black-text" exact to="/addmoviepage">Check out our list of movies HERE</NavLink></li>
+          <li><NavLink className="black-text" exact to="/addmoviepage">Don't see a movie? Add it HERE!</NavLink></li>
         </ul>
       </div>
     </nav>

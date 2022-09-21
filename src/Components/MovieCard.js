@@ -7,16 +7,26 @@ function MovieCard({ movie }){
   const [userName, setUserName] = useState("")
   const [comment, setComment] = useState("")
   const [rate, setRate] = useState("")
-
+  const [movieRate, setMovieRate] = useState("")
+  
 
   useEffect(() => {
     fetch(`http://localhost:9292/reviews/${movie.id}`)
     .then(res => res.json())
     .then(data => reviewSetter(data))
+
+    fetch(`http://localhost:9292/reviewavg/${movie.id}`)
+    .then(res => res.json())
+    .then(data => movieRateSetter(data))
+
   }, [])
 
   function reviewSetter(data){
     setReviews(data)
+  }
+
+  function movieRateSetter(data){
+    setMovieRate(data)
   }
 
   function handleSubmit(e){
@@ -64,11 +74,16 @@ function MovieCard({ movie }){
       })
     .then(res => res.json())
     .then(data => reviewSetter([...reviews, data]))
+
+    const num = movieRate + parseInt(rate)
+    console.log(num)
+    setMovieRate(num/2)
+
       setUserName("")
       setComment("")
       setRate("")
+
     }
-  
 
 
   function handleName(e){
@@ -93,12 +108,11 @@ function MovieCard({ movie }){
     reviewSetter(newList)
   }
 
-  const filterReviews = reviews.filter(review => review.movie_id === id)
-
   return(
     <div className="movie-card">
       <div className="ticket-left">
       <div className="movie-info">
+        <h5 className="movie-name">{movie.name} : {Math.round(movieRate)} </h5>
         <img className="movie-image" src={image} />
       </div>
       <div className="movie-input">
@@ -113,7 +127,7 @@ function MovieCard({ movie }){
       </div>
       </div>
       <div className="reviews">
-        {filterReviews.map(review => <Review key={review.id} onReviewDelete={onReviewDelete} review={review}/>)}
+        {reviews.map(review => <Review key={review.id} onReviewDelete={onReviewDelete} review={review}/>)}
       </div>
     </div>
   )
