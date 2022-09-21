@@ -20,7 +20,7 @@ function UserPage({userId}){
       <h1>{user.name}'s User Page</h1>
       <h4>Reviews</h4>
       <div className="user-review-container">
-      {reviews.map(review => <UserReview review={review}/>)}
+      {reviews.map(review => <UserReview key={review.id}review={review}/>)}
       </div>
     </div>
   )

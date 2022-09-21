@@ -7,7 +7,7 @@ function UserReview({review}){
   const [edit, setEdit] = useState(false)
   const [rating, setRating] = useState(review.rating)
   const [comment, setComment] = useState(review.comment)
-
+console.log(review.movie.name)
   function rateChange(e){
     setRating(e.target.value)
   }
