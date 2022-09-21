@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home';
 import NavBar from './Components/NavBar';
-import MovieListPage from './Components/MovieListPage';
+import AddMoviePage from './Components/AddMoviePage';
 
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/movielist">
-          <MovieListPage />
+        <Route exact path="/addmoviepage">
+          <AddMoviePage />
         </Route>
       </Switch>
     </div>

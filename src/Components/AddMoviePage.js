@@ -1,14 +1,14 @@
 import React from "react";
 
-function MovieListPage(){
+function AddMoviePage(){
 
   return(
     <>
       <h1>
-        MovieListPage
+        AddMoviePage
       </h1>
     </>
   )
 }
 
-export default MovieListPage
+export default AddMoviePage
