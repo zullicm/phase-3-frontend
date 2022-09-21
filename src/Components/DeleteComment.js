@@ -1,18 +1,18 @@
 import React from "react";
 
-function DeleteComment({id}){
+function DeleteComment({onReviewDelete, id}){
 
   function deleteReview(){
-    fetch(`url/${id}`, {
+    fetch(`http://localhost:9292/deletereview/${id}`, {
       method: "DELETE"
     })
     .then(res => res.json())
-    .then(() => onItemDelete(id))
+    .then(() => onReviewDelete(id))
   }
 
   return(
     <>
-    <i onClick={deleteReview} class="material-icons">delete_forever</i>
+    <i onClick={deleteReview} className="material-icons">delete_forever</i>
     </>
   )
 }

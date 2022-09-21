@@ -63,6 +63,7 @@
   border: #282c34;
   border-style: dashed;
   display: flex;
+  max-height: 611px;
 }
 
 .movie-info{
@@ -100,4 +101,6 @@
   border-radius: 10px;
   border-color: #000000;
   border-style: dashed;
+  margin: 4px;
+  float: left;
 }

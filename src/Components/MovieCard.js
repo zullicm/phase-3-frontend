@@ -88,6 +88,11 @@ function MovieCard({ movie }){
     }else{setRate(e.target.value)}
   }
 
+  function onReviewDelete(id){
+    const newList = reviews.filter(review => review.id !== id)
+    reviewSetter(newList)
+  }
+
   const filterReviews = reviews.filter(review => review.movie_id === id)
 
   return(
@@ -108,7 +113,7 @@ function MovieCard({ movie }){
       </div>
       </div>
       <div className="reviews">
-        {filterReviews.map(array => <Review review={array}/>)}
+        {filterReviews.map(review => <Review key={review.id} onReviewDelete={onReviewDelete} review={review}/>)}
       </div>
     </div>
   )
