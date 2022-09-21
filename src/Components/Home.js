@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
-function Home(){
+function Home({getUserData}){
   const [movies, setMovies] = useState([])
   
   useEffect(() => {
@@ -24,11 +24,10 @@ function Home(){
       <h1>
         Home
       </h1>
-        {movies.map(movie => <MovieCard handleMovieDelete={handleMovieDelete}key={movie.id} movie={movie} /> )}
+        {movies.map(movie => <MovieCard getUserData={getUserData}handleMovieDelete={handleMovieDelete}key={movie.id} movie={movie} /> )}
     </>
   )
 }
 
 export default Home
 
-// http://localhost:9292/movies

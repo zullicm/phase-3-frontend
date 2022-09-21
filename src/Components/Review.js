@@ -1,8 +1,9 @@
 
 import React, {useState, useEffect} from "react";
 import DeleteComment from "./DeleteComment";
+import { NavLink } from "react-router-dom"
 
-function Review({review, onReviewDelete}){
+function Review({review, onReviewDelete, getUserData}){
 
   const [user, setUser] = useState("")
 
@@ -18,6 +19,7 @@ function Review({review, onReviewDelete}){
 
   return (
     <div className="review">
+      <NavLink onClick={() => getUserData(review.user_id)} className="user-link" exact to="/userpage">UserPage</NavLink>
       <p><b>User:</b>  <em>{review.user ? review.user.name : user}</em>  <b>Rating:</b>  {review.rating.toString()}</p>
       <p><b>Comment:</b></p>
       <p>{review.comment}</p>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import DeleteMovie from "./DeleteMovie";
 import Review from "./Review";
 
-function MovieCard({ movie, handleMovieDelete }){
+function MovieCard({ movie, handleMovieDelete, getUserData }){
   const {name, image, id} = movie
   const [reviews, setReviews] = useState([])
   const [userName, setUserName] = useState("")
@@ -125,7 +125,7 @@ function MovieCard({ movie, handleMovieDelete }){
       <DeleteMovie handleMovieDelete={handleMovieDelete}movieId={id}/>
       </div>
       <div className="reviews">
-        {reviews.map(review => <Review key={review.id} onReviewDelete={onReviewDelete} review={review}/>)}
+        {reviews.map(review => <Review key={review.id} getUserData={getUserData}onReviewDelete={onReviewDelete} review={review}/>)}
       </div>
         
     </div>
