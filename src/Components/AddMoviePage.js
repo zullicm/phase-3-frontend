@@ -41,9 +41,9 @@ function AddMoviePage(){
       </h1>
       <div className="movie-form">
         <form>
-          <input type="text" name="name" placeholder=" Your Name" onChange={handleName}
+          <input type="text" name="name" placeholder=" Movie Name" onChange={handleName}
            value={name}></input>
-          <input type="text" name="comment" placeholder=" Your Witty Comment" onChange={handleImage} value={image}></input>
+          <input type="text" name="comment" placeholder=" Movie Image Url" onChange={handleImage} value={image}></input>
           <a onClick={handleSubmit} className="waves-effect waves-light btn">Add Movie</a>
         </form>
       </div>
