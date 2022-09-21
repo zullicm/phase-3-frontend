@@ -28,7 +28,10 @@ function AddMoviePage(){
       body: JSON.stringify(newMovie)
     })
      .then(res => res.json())
-     .then(data => setState(data))
+     .then(data => console.log(data))
+
+     setName("")
+     setImage("")
   }
 
   return(
@@ -41,7 +44,7 @@ function AddMoviePage(){
           <input type="text" name="name" placeholder=" Your Name" onChange={handleName}
            value={name}></input>
           <input type="text" name="comment" placeholder=" Your Witty Comment" onChange={handleImage} value={image}></input>
-          <a onClick={handleSubmit} className="waves-effect waves-light btn">Leave Comment</a>
+          <a onClick={handleSubmit} className="waves-effect waves-light btn">Add Movie</a>
         </form>
       </div>
     </>

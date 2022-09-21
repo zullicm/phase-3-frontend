@@ -7,9 +7,12 @@ function Home(){
   useEffect(() => {
     fetch("http://localhost:9292/movies")
     .then(res => res.json())
-    .then(data => setMovies(data))
+    .then(data => movieSetter(data))
   }, [])
 
+  function movieSetter(data){
+    setMovies(data)
+  }
 
   return(
     <>
