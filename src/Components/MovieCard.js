@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
+import DeleteMovie from "./DeleteMovie";
 import Review from "./Review";
 
-function MovieCard({ movie }){
+function MovieCard({ movie, handleMovieDelete }){
   const {name, image, id} = movie
   const [reviews, setReviews] = useState([])
   const [userName, setUserName] = useState("")
@@ -75,10 +76,6 @@ function MovieCard({ movie }){
     .then(res => res.json())
     .then(data => reviewSetter([...reviews, data]))
 
-    const num = movieRate + parseInt(rate)
-    console.log(num)
-    setMovieRate(num/2)
-
       setUserName("")
       setComment("")
       setRate("")
@@ -125,10 +122,12 @@ function MovieCard({ movie }){
           <a onClick={handleSubmit} className="waves-effect waves-light btn">Leave Comment</a>
         </form>
       </div>
+      <DeleteMovie handleMovieDelete={handleMovieDelete}movieId={id}/>
       </div>
       <div className="reviews">
         {reviews.map(review => <Review key={review.id} onReviewDelete={onReviewDelete} review={review}/>)}
       </div>
+        
     </div>
   )
 }

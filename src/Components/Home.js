@@ -14,12 +14,17 @@ function Home(){
     setMovies(data)
   }
 
+  function handleMovieDelete(id){
+    const movieArray = movies.filter(movie => movie.id !== id)
+    setMovies(movieArray)
+  }
+
   return(
     <>
       <h1>
         Home
       </h1>
-        {movies.map(movie => <MovieCard key={movie.id} movie={movie} /> )}
+        {movies.map(movie => <MovieCard handleMovieDelete={handleMovieDelete}key={movie.id} movie={movie} /> )}
     </>
   )
 }
