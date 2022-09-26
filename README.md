@@ -1,3 +1,10 @@
+ # Recomended BACKEND
+  This isn't a full stand alone app. This is just a frontend, you can find the
+  backend of the app here --->  https://github.com/zullicm/MovieReview
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

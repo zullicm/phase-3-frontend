@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import ReviewEditing from "./ReviewEditing";
 import ReviewNotEditing from "./ReviewNotEditing";
 
-function UserReview({review}){
+function UserReview({onReviewDelete, review}){
   const [edit, setEdit] = useState(false)
   const [rating, setRating] = useState(review.rating)
   const [comment, setComment] = useState(review.comment)
-console.log(review.movie.name)
+
   function rateChange(e){
     setRating(e.target.value)
   }
@@ -41,7 +41,7 @@ function sendEdit(e){
   return(
     <div>
       <div className="review-editor">
-      {edit ? <ReviewEditing commentChange={commentChange}rateChange={rateChange}sendEdit={sendEdit} review={review}/> : <ReviewNotEditing comment={comment}rating={rating}changeEdit={changeEdit}review={review}/>}
+      {edit ? <ReviewEditing commentChange={commentChange}rateChange={rateChange}sendEdit={sendEdit} review={review}/> : <ReviewNotEditing onReviewDelete={onReviewDelete}comment={comment}rating={rating}changeEdit={changeEdit}review={review}/>}
       </div>
     </div>
   )

@@ -15,6 +15,11 @@ function UserPage({userId}){
     setReviews(data.reviews)
   }
 
+  function onReviewDelete(id){
+    const deletedReviews = reviews.filter( review => review.id !== id)
+    setReviews(deletedReviews)
+  }
+
   return(
     <div>
       <h1>{user.name}'s User Page</h1>
