@@ -6,7 +6,7 @@ function NavBar(){
     <div className="navbar-fixed">
     <nav>
       <div className="teal lighten-3 nav-wrapper">
-          <NavLink id="nav-logo" exact to="/">Movie Reviewer</NavLink>
+          <NavLink id="nav-logo" exact to="/">Flick Critique</NavLink>
           <ul className="right hide-on-med-and-down">
           <li><NavLink className="black-text" exact to="/addmoviepage">Don't see a movie? Add it HERE!</NavLink></li>
         </ul>
